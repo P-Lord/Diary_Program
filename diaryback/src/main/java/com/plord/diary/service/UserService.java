@@ -16,4 +16,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<User> {
     public Boolean vertify(String username,String password);
 
+    public User getByUserName(String username);
+
 }

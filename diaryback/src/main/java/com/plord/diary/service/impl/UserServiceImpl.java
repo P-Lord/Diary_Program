@@ -29,4 +29,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public Boolean vertify(String username,String password) {
         return mapper.verify(username, password) > 0;
     }
+
+    @Override
+    public User getByUserName(String username) {
+        return mapper.selectByUserName(username);
+    }
 }

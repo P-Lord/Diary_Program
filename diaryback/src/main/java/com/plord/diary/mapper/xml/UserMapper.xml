@@ -6,8 +6,8 @@
         select count(*) from `user` where username=#{username} and password=#{password}
     </select>
 
-
-
-
+    <select id="selectByUserName" resultType="com.plord.diary.entity.User">
+        select * from `user` where username=#{username}
+    </select>
 
 </mapper>

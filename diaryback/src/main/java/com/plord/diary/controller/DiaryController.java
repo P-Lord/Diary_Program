@@ -27,17 +27,14 @@ public class DiaryController {
     DiaryService service;
 
     @GetMapping("/diarydata")
-    public List<Diary> getBlogList(){
-        return service.list();
+    public Object getBlogList(){
+        return service.getById(1);
     }
 
     @PostMapping("/insert")
     public boolean add(@RequestBody Diary diary){
         return service.save(diary);
     }
-
-
-
 
 
 }

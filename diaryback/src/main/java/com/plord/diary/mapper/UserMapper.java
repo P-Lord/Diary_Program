@@ -15,5 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
     public int verify(String username,String password);
-
+    public User selectByUserName(String username);
 }
