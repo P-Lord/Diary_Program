@@ -24,4 +24,9 @@ public class DiaryServiceImpl extends ServiceImpl<DiaryMapper, Diary> implements
     @Autowired
     DiaryMapper mapper;
 
+
+    @Override
+    public List<Diary> getListByUserName(String username) {
+        return mapper.getListByUserName(username);
+    }
 }

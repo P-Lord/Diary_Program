@@ -2,7 +2,7 @@ package com.plord.diary.mapper;
 
 import com.plord.diary.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -12,8 +12,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @author admin
  * @since 2021-10-10
  */
-@Mapper
+@Component
 public interface UserMapper extends BaseMapper<User> {
-    public int verify(String username,String password);
-    public User selectByUserName(String username);
+    int verify(String username,String password);
+    User selectByUserName(String username);
 }

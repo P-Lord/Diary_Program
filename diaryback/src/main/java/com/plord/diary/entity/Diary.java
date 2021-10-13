@@ -1,9 +1,10 @@
 package com.plord.diary.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,13 +25,13 @@ import lombok.EqualsAndHashCode;
       @TableId(value = "diaryid", type = IdType.AUTO)
       private Integer diaryid;
 
-    private String userid;
+    private String username;
 
     private String title;
 
     private String weather;
 
-    private LocalDate data;
+    private Date date;
 
     private String content;
 

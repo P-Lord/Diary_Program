@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.plord.diary.entity.User;
 import com.plord.diary.service.UserService;
 import com.plord.diary.vo.ConstsVo;
+import com.sun.org.apache.xpath.internal.objects.XObject;
 import javafx.scene.input.DataFormat;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class UserController {
         return service.list();
     }
 
+
     @PostMapping("/login")
     public Object login(HttpServletRequest request, HttpSession session){
         JSONObject jsonObject = new JSONObject();
@@ -58,6 +60,10 @@ public class UserController {
         jsonObject.put(ConstsVo.MSG,"用户名或密码错误");
         return jsonObject;
     }
+
+
+
+
 
     @PostMapping("/register")
     public Object register(HttpServletRequest request){
@@ -94,6 +100,9 @@ public class UserController {
         jsonObject.put(ConstsVo.MSG,"注册失败");
         return jsonObject;
     }
+
+
+
 
     @PostMapping("/updata")
     public Object updataUser(HttpServletRequest request){

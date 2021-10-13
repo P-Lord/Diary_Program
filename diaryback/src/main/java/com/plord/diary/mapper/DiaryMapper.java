@@ -2,7 +2,9 @@ package com.plord.diary.mapper;
 
 import com.plord.diary.entity.Diary;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,9 +14,9 @@ import org.apache.ibatis.annotations.Mapper;
  * @author admin
  * @since 2021-10-10
  */
-@Mapper
+@Component
 public interface DiaryMapper extends BaseMapper<Diary> {
 
-
+    List<Diary> getListByUserName(String username);
 
 }
