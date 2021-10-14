@@ -9,10 +9,8 @@ import com.sun.org.apache.xpath.internal.objects.XObject;
 import javafx.scene.input.DataFormat;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,6 +40,10 @@ public class UserController {
         return service.list();
     }
 
+    @GetMapping("/getUser/{username}")
+    public Object getUse(@PathVariable("username") String username) {
+        return service.getByUserName(username);
+    }
 
     @PostMapping("/login")
     public Object login(HttpServletRequest request, HttpSession session){
