@@ -10,4 +10,20 @@
         select * from `user` where username=#{username}
     </select>
 
+
+    <update id="updateUserPhoto"  parameterType="com.plord.diary.entity.User">
+        UPDATE `user`
+        <trim prefix="set" suffixOverrides=",">
+            <if test="id!=null">id=#{id},</if>
+            <if test="username!=null">username=#{username},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="location!=null">location=#{location},</if>
+            <if test="firstday!=null">firstday=#{firstday},</if>
+            <if test="sex!=null">SN_ID=#{sex},</if>
+            <if test="photopath!=null">photopath=#{photopath},</if>
+        </trim>
+        WHERE username=#{username}
+    </update>
+
 </mapper>

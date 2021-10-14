@@ -18,4 +18,6 @@ public interface UserService extends IService<User> {
 
     public User getByUserName(String username);
 
+    public int updateUserPhoto(User user);
+
 }

@@ -16,4 +16,5 @@ import org.springframework.stereotype.Component;
 public interface UserMapper extends BaseMapper<User> {
     int verify(String username,String password);
     User selectByUserName(String username);
+    int updateUserPhoto(User user);
 }

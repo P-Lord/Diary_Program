@@ -132,6 +132,15 @@ public class UserController {
         return jsonObject;
     }
 
+    @PutMapping("/UpdateUserPhoto/{username}/{photopath}")
+    public int UpdateUserPhoto(@PathVariable("username") String username,@PathVariable("photopath") String photopath){
+        User user = new User();
+        user.setUsername(username);
+        user.setPhotopath(photopath);
+        return service.updateUserPhoto(user);
+    }
+
+
 
 
 }

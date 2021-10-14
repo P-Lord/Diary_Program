@@ -30,5 +30,6 @@ import lombok.Data;
 
     private int sex;
 
+    private String photopath;
 
 }

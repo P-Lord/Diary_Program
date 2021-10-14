@@ -34,4 +34,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public User getByUserName(String username) {
         return mapper.selectByUserName(username);
     }
+
+    @Override
+    public int updateUserPhoto(User user) {
+        return mapper.updateUserPhoto(user);
+    }
 }
