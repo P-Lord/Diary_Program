@@ -20,10 +20,9 @@
             <if test="password!=null">password=#{password},</if>
             <if test="location!=null">location=#{location},</if>
             <if test="firstday!=null">firstday=#{firstday},</if>
-            <if test="sex!=null">SN_ID=#{sex},</if>
             <if test="photopath!=null">photopath=#{photopath},</if>
         </trim>
-        WHERE username=#{username}
+        WHERE `username`=#{username}
     </update>
 
 </mapper>

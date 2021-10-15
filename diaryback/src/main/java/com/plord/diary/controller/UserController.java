@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
  * @since 2021-10-10
  */
 @RestController
-@RequestMapping("//user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -38,6 +38,14 @@ public class UserController {
     public Object getUse(@PathVariable("username") String username) {
         return service.getByUserName(username);
     }
+
+    @GetMapping("/getEditorMsg/{EditorName}")
+    public Object getEditorMSg(@PathVariable("EditorName") String EditorName) {
+        String username = EditorName;
+        System.out.println(username);
+        return service.getByUserName(username);
+    }
+
 
     @PostMapping("/login")
     public Object login(HttpServletRequest request, HttpSession session){
@@ -126,13 +134,17 @@ public class UserController {
         return jsonObject;
     }
 
-    @PutMapping("/UpdateUserPhoto/{username}/{photopath}")
-    public int UpdateUserPhoto(@PathVariable("username") String username,@PathVariable("photopath") String photopath){
+    @PutMapping("/updatephoto/{username}")
+    public int UpdateUserPhoto(@PathVariable("username") String username, HttpServletRequest request){
+        String photopath = request.getParameter("photopath");
+        System.out.println(photopath);
         User user = new User();
         user.setUsername(username);
         user.setPhotopath(photopath);
         return service.updateUserPhoto(user);
     }
+
+
 
 
 
