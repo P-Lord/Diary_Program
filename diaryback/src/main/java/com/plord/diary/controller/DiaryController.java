@@ -1,7 +1,6 @@
 package com.plord.diary.controller;
 
 
-
 import com.plord.diary.entity.Diary;
 import com.plord.diary.service.DiaryService;
 import com.plord.diary.vo.ConstsVo;
@@ -19,7 +18,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author admin
@@ -33,12 +32,12 @@ public class DiaryController {
     DiaryService service;
 
     @GetMapping("/alldiary")
-    public List<Diary> getDiaryList(){
+    public List<Diary> getDiaryList() {
         return service.list();
     }
 
     @PostMapping("/insertdiary")
-    public Object InsertDiary(HttpServletRequest request){
+    public Object InsertDiary(HttpServletRequest request) {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username").trim();
         String title = request.getParameter("title").trim();
@@ -49,7 +48,7 @@ public class DiaryController {
         Date editordate = new Date();
         try {
             editordate = sdf.parse(date);
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         Diary diary = new Diary();
@@ -65,28 +64,28 @@ public class DiaryController {
             jsonObject.put(ConstsVo.MSG, "提交成功");
             return jsonObject;
         }
-        jsonObject.put(ConstsVo.CODE,250);
-        jsonObject.put(ConstsVo.MSG,"提交失败");
+        jsonObject.put(ConstsVo.CODE, 250);
+        jsonObject.put(ConstsVo.MSG, "提交失败");
         return jsonObject;
     }
 
     @PostMapping("/getDiaryDetail/{id}")
-    public Diary getDiaryDetail(@PathVariable(name = "id") Integer id){
+    public Diary getDiaryDetail(@PathVariable(name = "id") Integer id) {
         return service.getById(id);
     }
 
     @GetMapping("/getUserDiary/{username}")
-    public List<Diary> getUserDiary(@PathVariable(name = "username") String username){
+    public List<Diary> getUserDiary(@PathVariable(name = "username") String username) {
         return service.getListByUserName(username);
     }
 
     @DeleteMapping("/delete/{id}")
-    public Boolean deleteDiary(@PathVariable(name = "id") Integer id){
+    public Boolean deleteDiary(@PathVariable(name = "id") Integer id) {
         return service.removeById(id);
     }
 
     @PutMapping("update")
-    public boolean update(@RequestBody Diary diary){
+    public boolean update(@RequestBody Diary diary) {
         return service.updateById(diary);
     }
 

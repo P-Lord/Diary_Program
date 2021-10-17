@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author admin
@@ -48,29 +48,26 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public Object login(HttpServletRequest request, HttpSession session){
+    public Object login(HttpServletRequest request, HttpSession session) {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        boolean flag = service.vertify(username,password);
+        boolean flag = service.vertify(username, password);
         User user = service.getByUserName(username);
-        if(flag){
-            jsonObject.put(ConstsVo.CODE,520);
-            jsonObject.put(ConstsVo.MSG,"登录成功");
-            session.setAttribute("user",user);
+        if (flag) {
+            jsonObject.put(ConstsVo.CODE, 520);
+            jsonObject.put(ConstsVo.MSG, "登录成功");
+            session.setAttribute("user", user);
             return jsonObject;
         }
-        jsonObject.put(ConstsVo.CODE,250);
-        jsonObject.put(ConstsVo.MSG,"用户名或密码错误");
+        jsonObject.put(ConstsVo.CODE, 250);
+        jsonObject.put(ConstsVo.MSG, "用户名或密码错误");
         return jsonObject;
     }
 
 
-
-
-
     @PostMapping("/register")
-    public Object register(HttpServletRequest request){
+    public Object register(HttpServletRequest request) {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username").trim();
         String password = request.getParameter("password").trim();
@@ -83,7 +80,7 @@ public class UserController {
         Date firstdaydate = new Date();
         try {
             firstdaydate = sdf.parse(firstday);
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         User user = new User();
@@ -100,16 +97,14 @@ public class UserController {
             jsonObject.put(ConstsVo.MSG, "注册成功");
             return jsonObject;
         }
-        jsonObject.put(ConstsVo.CODE,250);
-        jsonObject.put(ConstsVo.MSG,"注册失败");
+        jsonObject.put(ConstsVo.CODE, 250);
+        jsonObject.put(ConstsVo.MSG, "注册失败");
         return jsonObject;
     }
 
 
-
-
     @PostMapping("/updata")
-    public Object updataUser(HttpServletRequest request){
+    public Object updataUser(HttpServletRequest request) {
         JSONObject jsonObject = new JSONObject();
         String username = request.getParameter("username").trim();
         String passward = request.getParameter("password").trim();
@@ -123,19 +118,19 @@ public class UserController {
         user.setPassword(passward);
         user.setSex(new Integer(sex));
         user.setUsername(username);
-        boolean flag = service.update(user,null);
+        boolean flag = service.update(user, null);
         if (flag) {
             jsonObject.put(ConstsVo.CODE, 520);
             jsonObject.put(ConstsVo.MSG, "修改成功");
             return jsonObject;
         }
-        jsonObject.put(ConstsVo.CODE,250);
-        jsonObject.put(ConstsVo.MSG,"修改失败");
+        jsonObject.put(ConstsVo.CODE, 250);
+        jsonObject.put(ConstsVo.MSG, "修改失败");
         return jsonObject;
     }
 
     @PutMapping("/updatephoto/{username}")
-    public int UpdateUserPhoto(@PathVariable("username") String username, HttpServletRequest request){
+    public int UpdateUserPhoto(@PathVariable("username") String username, HttpServletRequest request) {
         String photopath = request.getParameter("photopath");
         System.out.println(photopath);
         User user = new User();
@@ -143,10 +138,6 @@ public class UserController {
         user.setPhotopath(photopath);
         return service.updateUserPhoto(user);
     }
-
-
-
-
 
 
 }
